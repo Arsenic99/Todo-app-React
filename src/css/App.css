@@ -1,0 +1,11 @@
+.App {
+  display: grid;
+  grid-template-areas: "quote main" "youtube main";
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    grid-template-areas: "quote" "main" "youtube";
+  }
+}/*# sourceMappingURL=App.css.map */

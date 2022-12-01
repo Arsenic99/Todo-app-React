@@ -1,0 +1,26 @@
+.main {
+    grid-area: main;
+    width: 70vw;
+    height: 100vh;
+
+    padding: 50px;
+    overflow-y: auto;
+    background: #DCF5E6;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.tasks{
+    height: 73vh;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .main {
+        width: 100vw;
+        height: 85vh;
+    }
+    .tasks{
+        height: 59vh;
+    }
+}
