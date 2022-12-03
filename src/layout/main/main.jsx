@@ -17,12 +17,18 @@ const Main = (props) =>{
         setTasks(oldArray => [...oldArray, taskObj]);
     }
     const doneHandler = (id) =>{
-        tasks.forEach((item)=>{
-            if(item.id===id)
-            {
-                item.isDone = ! item.isDone;
-            }
-        });
+        setTimeout(()=>{
+            setTasks(prevState=>{
+                const newState = prevState.map(obj=>{
+                    if(obj.id === id){
+                        return {...obj, isDone: !obj.isDone};
+                    }
+                    return obj;
+                })
+                return newState;
+            })
+        },100)
+        
     }
     const editTask = (id) =>{
         if(!edit)
@@ -55,7 +61,7 @@ const Main = (props) =>{
     const deleteTask = (id) =>{
         setTasks(prev => prev.filter(task => task.id !== id ))
     }
-    
+    console.log(tasks);
     return (
         <div className="main">
             <Title />

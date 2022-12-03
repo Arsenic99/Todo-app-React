@@ -4,17 +4,16 @@ import '../css/quoteapi.css'
 
 export default function QuoteAPI() {
     const [quote, setQuote] = useState({
-        id: "",
+        category: "",
         quote: "",
-        person: ""
+        author: ""
     });
-
     const getQoute = async () => {
         try {
-            const res = await axios.get(`https://motivational-quote-api.herokuapp.com/quotes/random`);
+            const res = await axios.get(`https://api.api-ninjas.com/v1/quotes?category=money`, {headers:{'X-Api-Key': 'dcDeBk+hJ6hixgVDaf+uAg==QGLU4BF3n1bY3lsr'}});
             const result = res.data;
             setQuote(prevState => {
-                return { ...prevState, id: result.id, quote: result.quote, person: result.person }
+                return { ...prevState, category: result[0].category, quote: result[0].quote, author: result[0].author }
             });
         }
         catch (error) {
@@ -29,14 +28,13 @@ export default function QuoteAPI() {
             getQoute();
         }, 60000)
     })
+    console.log(quote);
     return (
         <div>
-            {/* <div>{quote.quote}</div> */}
             <blockquote>
                 <p>{quote.quote}</p>
-                <footer>{quote.person}</footer>
+                <footer>{quote.author}</footer>
             </blockquote>
-            {/* <div>{quote.person}</div> */}
         </div>
     )
 

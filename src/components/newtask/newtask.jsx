@@ -14,9 +14,15 @@ const NewTask = (props) =>{
             alert("Box is empty");
         }
     }
+    const addTaskEnter = (event) =>{
+        if(inputEl.current.value !== '' && event.key==='Enter'){
+            props.addTask(inputEl.current.value);
+            inputEl.current.value = '';
+        }
+    }
     return (
         <div className="newtask">
-            <input type="text" placeholder="Add new task" className="input" ref={inputEl}/>
+            <input type="text" placeholder="Add new task" className="input" ref={inputEl} onKeyDown={addTaskEnter}/>
             <button className="button" onClick={addTask}>Add task</button>
         </div>
     )
